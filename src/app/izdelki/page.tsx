@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Odkrijte celotno kolekcijo GOODWILL — ženske, moški in dodatki.",
 };
 
-const CATEGORIES: Category[] = ["zenske", "moski", "dodatki", "arhiv"];
+const CATEGORIES: Category[] = ["zenske", "moski", "dodatki", "arhiv", "majice", "hlace", "pulover", "krilo", "archive_sale"];
 
 export default async function IzdelkiPage({
   searchParams,

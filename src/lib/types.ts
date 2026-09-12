@@ -1,4 +1,4 @@
-export type Category = "zenske" | "moski" | "dodatki" | "arhiv";
+export type Category = "zenske" | "moski" | "dodatki" | "arhiv" | "majice" | "hlace" | "pulover" | "krilo" | "archive_sale";
 
 export interface ProductColor {
   name: string;

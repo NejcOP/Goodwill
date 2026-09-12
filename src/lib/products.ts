@@ -10,6 +10,11 @@ export const CATEGORY_LABELS: Record<Category, string> = {
   moski: "Moški",
   dodatki: "Dodatki",
   arhiv: "Arhiv",
+  majice: "Majice",
+  hlace: "Hlače",
+  pulover: "Pulover",
+  krilo: "Krilo",
+  archive_sale: "Archive Sale",
 };
 
 export const categoryImages: Record<Category, string> = {
@@ -17,6 +22,11 @@ export const categoryImages: Record<Category, string> = {
   moski: img("1517841905240-472988babdf9"),
   dodatki: img("1519085360753-af0119f7cbe7"),
   arhiv: img("1483985988355-763728e1935b"),
+  majice: img("1521572163474-6864f9cf17ab"),
+  hlace: img("1542272604-787c3835535d"),
+  pulover: img("1556821552-9852b0cbff4d"),
+  krilo: img("1533900298318-6b8da08a0e52"),
+  archive_sale: img("1495556394369-81fb59a4fe64"),
 };
 
 export const heroImage = img("1490481651871-ab68de25d43d");

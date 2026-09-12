@@ -7,7 +7,12 @@ const FILTERS: { label: string; value: Category | "all" }[] = [
   { label: "Vse", value: "all" },
   { label: CATEGORY_LABELS.zenske, value: "zenske" },
   { label: CATEGORY_LABELS.moski, value: "moski" },
+  { label: CATEGORY_LABELS.majice, value: "majice" },
+  { label: CATEGORY_LABELS.hlace, value: "hlace" },
+  { label: CATEGORY_LABELS.pulover, value: "pulover" },
+  { label: CATEGORY_LABELS.krilo, value: "krilo" },
   { label: CATEGORY_LABELS.dodatki, value: "dodatki" },
+  { label: CATEGORY_LABELS.archive_sale, value: "archive_sale" },
   { label: CATEGORY_LABELS.arhiv, value: "arhiv" },
 ];
 
