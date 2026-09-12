@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Clock, MapPin, Phone, Mail } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 
