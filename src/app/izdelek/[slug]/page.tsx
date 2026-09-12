@@ -4,7 +4,6 @@ import { ProductGallery } from "@/components/product/gallery";
 import { PurchaseCard } from "@/components/product/purchase-card";
 import { InfoAccordion } from "@/components/product/info-accordion";
 import { RelatedProducts } from "@/components/product/related-products";
-import { RecentlyViewed } from "@/components/product/recently-viewed";
 import { TrackView } from "@/components/product/track-view";
 import { getProductBySlug, getRelatedProducts, products } from "@/lib/products";
 
@@ -49,10 +48,6 @@ export default async function ProductPage({
 
       <div className="container-luxury mt-24">
         <RelatedProducts title="Morda vam bo všeč tudi" products={related} />
-      </div>
-
-      <div className="container-luxury mt-24">
-        <RecentlyViewed excludeSlug={product.slug} />
       </div>
     </div>
   );
