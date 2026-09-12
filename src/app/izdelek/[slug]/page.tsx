@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { ProductGallery } from "@/components/product/gallery";
 import { PurchaseCard } from "@/components/product/purchase-card";
 import { InfoAccordion } from "@/components/product/info-accordion";
-import { Reviews } from "@/components/product/reviews";
 import { RelatedProducts } from "@/components/product/related-products";
 import { RecentlyViewed } from "@/components/product/recently-viewed";
 import { TrackView } from "@/components/product/track-view";
@@ -46,10 +45,6 @@ export default async function ProductPage({
 
       <div className="container-luxury mt-24 max-w-2xl">
         <InfoAccordion product={product} />
-      </div>
-
-      <div className="container-luxury mt-24">
-        <Reviews rating={product.rating} reviewCount={product.reviewCount} />
       </div>
 
       <div className="container-luxury mt-24">
