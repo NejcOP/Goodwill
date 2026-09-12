@@ -18,7 +18,7 @@ const locations = [
     name: "GOODWILL Pisarna",
     address: "Pražakova 8",
     city: "1000 Ljubljana, Slovenija",
-    phone: "+386 1 234 5678",
+    phone: "030 387 721",
     email: "info@goodwill.si",
     hours: hoursOffice,
     mapLabel: "Pražakova 8, Ljubljana",
