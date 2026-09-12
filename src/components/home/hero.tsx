@@ -20,7 +20,7 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative flex h-[100svh] min-h-[640px] w-full items-end overflow-hidden bg-charcoal"
+      className="relative flex h-[70vh] min-h-[480px] w-full items-end overflow-hidden bg-charcoal"
     >
       <motion.div style={{ y }} className="absolute inset-0 -top-[10%] h-[120%]">
         <Image
@@ -41,9 +41,6 @@ export function Hero() {
         transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
         className="container-luxury relative z-10 pb-20 sm:pb-28"
       >
-        <p className="mb-4 text-xs tracking-[0.4em] text-white/80 uppercase">
-          Kolekcija pomlad / poletje
-        </p>
         <h1 className="max-w-3xl font-serif text-6xl leading-[1.05] text-white sm:text-7xl lg:text-8xl">
           Udobni luksuz
         </h1>
