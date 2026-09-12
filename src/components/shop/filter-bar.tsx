@@ -18,28 +18,30 @@ const FILTERS: { label: string; value: Category | "all" }[] = [
 
 export function FilterBar({ active }: { active: string }) {
   return (
-    <div className="flex flex-wrap gap-x-8 gap-y-3 border-b border-beige pb-6">
-      {FILTERS.map((filter) => {
-        const isActive = active === filter.value;
-        const href =
-          filter.value === "all"
-            ? "/izdelki"
-            : `/izdelki?kategorija=${filter.value}`;
-        return (
-          <Link
-            key={filter.value}
-            href={href}
-            className={cn(
-              "text-xs tracking-[0.15em] uppercase transition-colors",
-              isActive
-                ? "text-foreground"
-                : "text-muted-foreground hover:text-foreground"
-            )}
-          >
-            {filter.label}
-          </Link>
-        );
-      })}
+    <div className="mb-8">
+      <div className="flex flex-wrap gap-2">
+        {FILTERS.map((filter) => {
+          const isActive = active === filter.value;
+          const href =
+            filter.value === "all"
+              ? "/izdelki"
+              : `/izdelki?kategorija=${filter.value}`;
+          return (
+            <Link
+              key={filter.value}
+              href={href}
+              className={cn(
+                "inline-flex items-center justify-center px-4 py-2 rounded-full text-xs tracking-[0.1em] uppercase font-medium transition-all duration-300 ease-out",
+                isActive
+                  ? "bg-charcoal text-white shadow-sm"
+                  : "border border-charcoal/20 text-charcoal hover:border-charcoal/60 hover:bg-charcoal/5"
+              )}
+            >
+              {filter.label}
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }
