@@ -8,8 +8,8 @@ export default function Home() {
     <>
       <Hero />
       <FeaturedCategories />
-      <InstagramSection />
       <NewArrivalsCarousel />
+      <InstagramSection />
     </>
   );
 }
