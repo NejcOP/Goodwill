@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Clock, MapPin, Phone, Mail } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 
@@ -21,8 +20,6 @@ const locations = [
     phone: "+386 1 234 5678",
     email: "info@goodwill.si",
     hours: hoursOffice,
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&auto=format&fit=crop",
-    mapImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&auto=format&fit=crop",
     mapLabel: "Pražakova 8, Ljubljana",
   },
 ];
@@ -117,27 +114,20 @@ export default function KjeSmoPage() {
 
       <section className="section-padding">
         <div className="container-luxury">
-          <p className="eyebrow mb-8">Našo lokacijo najdete na</p>
-          <div className="max-w-2xl">
-            {locations.map((location) => (
-              <Reveal key={`map-${location.id}`}>
-                <div className="overflow-hidden rounded-2xl bg-beige aspect-video relative">
-                  <Image
-                    src={location.mapImage}
-                    alt={`Lokacija ${location.mapLabel}`}
-                    fill
-                    sizes="(min-width: 1024px) 45vw, 100vw"
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="rounded-full bg-warm-white/90 px-6 py-3 text-xs tracking-[0.2em] uppercase shadow-sm">
-                      {location.mapLabel}
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <p className="eyebrow mb-12">Našo lokacijo najdete na</p>
+          <Reveal>
+            <div className="overflow-hidden rounded-2xl bg-beige h-96">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.7551686876656!2d14.498629999999998!3d46.0505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d546c5d5d5d5d%3A0xf8c8c8c8c8c8c8c8!2sPra%C5%BEakova%208%2C%201000%20Ljubljana!5e0!3m2!1ssl!2ssi!4v1234567890123"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>
