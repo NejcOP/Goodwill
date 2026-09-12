@@ -6,14 +6,13 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useAuth } from "@/lib/auth-context";
+import { signUp } from "@/lib/actions/auth";
 import { staggerContainer, fadeUpItem } from "@/lib/animations";
 
 const inputCls =
   "h-12 rounded-none border-x-0 border-t-0 border-b border-border/60 bg-transparent px-0 focus-visible:ring-0 focus-visible:border-foreground transition-colors";
 
 export default function UstvariRacunPage() {
-  const { register } = useAuth();
   const router = useRouter();
 
   const [form, setForm] = useState({
@@ -22,13 +21,11 @@ export default function UstvariRacunPage() {
     email: "",
     password: "",
     confirmPassword: "",
-    birthDate: "",
-    newsletterConsent: false,
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  function set(field: keyof typeof form, value: string | boolean) {
+  function set(field: keyof typeof form, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
   }
 
@@ -46,20 +43,14 @@ export default function UstvariRacunPage() {
     }
 
     setLoading(true);
-    const result = await register({
-      firstName: form.firstName,
-      lastName: form.lastName,
-      email: form.email,
-      password: form.password,
-      birthDate: form.birthDate || undefined,
-      newsletterConsent: form.newsletterConsent,
-    });
+    const fullName = `${form.firstName} ${form.lastName}`.trim();
+    const result = await signUp(form.email, form.password, fullName);
     setLoading(false);
 
     if (result.error) {
       setError(result.error);
     } else {
-      router.push("/account");
+      router.push("/account/profil");
     }
   }
 
@@ -150,35 +141,6 @@ export default function UstvariRacunPage() {
               onChange={(e) => set("confirmPassword", e.target.value)}
               className={inputCls}
             />
-          </motion.div>
-
-          <motion.div variants={fadeUpItem}>
-            <label className="mb-2 block text-xs tracking-[0.1em] uppercase text-muted-foreground">
-              Datum rojstva{" "}
-              <span className="normal-case text-muted-foreground/60">(neobvezno)</span>
-            </label>
-            <Input
-              type="date"
-              autoComplete="bday"
-              value={form.birthDate}
-              onChange={(e) => set("birthDate", e.target.value)}
-              className={inputCls}
-            />
-          </motion.div>
-
-          <motion.div variants={fadeUpItem}>
-            <label className="flex cursor-pointer items-start gap-3">
-              <input
-                type="checkbox"
-                checked={form.newsletterConsent}
-                onChange={(e) => set("newsletterConsent", e.target.checked)}
-                className="mt-0.5 size-4 accent-foreground"
-              />
-              <span className="text-xs leading-relaxed text-muted-foreground">
-                Želim prejemati GOODWILL novice, ekskluzivne ponudbe in
-                informacije o novih kolekcijah.
-              </span>
-            </label>
           </motion.div>
 
           {error && (

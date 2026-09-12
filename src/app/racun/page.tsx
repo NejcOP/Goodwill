@@ -6,11 +6,10 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useAuth } from "@/lib/auth-context";
+import { signIn } from "@/lib/actions/auth";
 import { staggerContainer, fadeUpItem } from "@/lib/animations";
 
 export default function RacunPage() {
-  const { login } = useAuth();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,12 +20,12 @@ export default function RacunPage() {
     e.preventDefault();
     setError("");
     setLoading(true);
-    const result = await login(email, password);
+    const result = await signIn(email, password);
     setLoading(false);
     if (result.error) {
       setError(result.error);
     } else {
-      router.push("/account");
+      router.push("/account/profil");
     }
   }
 

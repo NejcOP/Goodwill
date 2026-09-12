@@ -5,16 +5,26 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { resetPassword } from "@/lib/actions/auth";
 import { staggerContainer, fadeUpItem } from "@/lib/animations";
 
 export default function PozabljenoGesloPage() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // Mock — in production connect to Supabase auth.resetPasswordForEmail()
-    setSent(true);
+    setError("");
+    setLoading(true);
+    const result = await resetPassword(email);
+    setLoading(false);
+    if (result.error) {
+      setError(result.error);
+    } else {
+      setSent(true);
+    }
   }
 
   return (
@@ -69,12 +79,23 @@ export default function PozabljenoGesloPage() {
                 />
               </motion.div>
 
+              {error && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-sm text-destructive"
+                >
+                  {error}
+                </motion.p>
+              )}
+
               <motion.div variants={fadeUpItem} className="mt-2">
                 <Button
                   type="submit"
+                  disabled={loading}
                   className="h-12 w-full rounded-full text-xs tracking-[0.15em] uppercase"
                 >
-                  Pošlji navodila
+                  {loading ? "Pošiljam..." : "Pošlji navodila"}
                 </Button>
               </motion.div>
             </form>
