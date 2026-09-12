@@ -5,14 +5,13 @@ import { Reveal } from "@/components/ui/reveal";
 import { categoryImages } from "@/lib/products";
 
 const categories = [
-  { name: "Ženske", href: "/izdelki?kategorija=zenske", image: categoryImages.zenske },
   { name: "Moški", href: "/izdelki?kategorija=moski", image: categoryImages.moski },
+  { name: "Ženske", href: "/izdelki?kategorija=zenske", image: categoryImages.zenske },
   {
-    name: "Dodatki",
-    href: "/izdelki?kategorija=dodatki",
+    name: "Novi prihodi",
+    href: "/izdelki?sort=najnovejsi",
     image: categoryImages.dodatki,
   },
-  { name: "Arhiv", href: "/izdelki?kategorija=arhiv", image: categoryImages.arhiv },
 ];
 
 export function FeaturedCategories() {
@@ -24,7 +23,7 @@ export function FeaturedCategories() {
           <h2 className="font-serif text-4xl sm:text-5xl">Nakupujte po kategorijah</h2>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
           {categories.map((cat, i) => (
             <Reveal key={cat.name} delay={i * 0.08}>
               <Link
