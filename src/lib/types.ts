@@ -1,4 +1,6 @@
-export type Category = "zenske" | "moski" | "dodatki" | "arhiv" | "majice" | "hlace" | "pulover" | "krilo" | "archive_sale";
+export type Gender = "zenske" | "moski";
+export type Subcategory = "majice" | "hlace" | "pulover" | "krilo" | "dodatki";
+export type Category = Gender | Subcategory | "arhiv" | "archive_sale";
 
 export interface ProductColor {
   name: string;
@@ -10,6 +12,8 @@ export interface Product {
   slug: string;
   name: string;
   category: Category;
+  gender?: Gender;
+  subcategory?: Subcategory;
   price: number;
   compareAtPrice?: number;
   images: [string, string, ...string[]];
