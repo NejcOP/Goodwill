@@ -5,32 +5,14 @@ import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
   title: "Kje smo",
-  description: "Obiščite GOODWILL studio in showroom v Ljubljani.",
+  description: "Obiščite GOODWILL pisarno v Ljubljani.",
 };
-
-const hours = [
-  { day: "Ponedeljek – petek", time: "10:00 – 19:00" },
-  { day: "Sobota", time: "10:00 – 17:00" },
-  { day: "Nedelja", time: "Zaprto" },
-];
 
 const hoursOffice = [
   { day: "Ponedeljek – petek", time: "9:30 – 17:30" },
 ];
 
 const locations = [
-  {
-    id: "showroom",
-    name: "GOODWILL Ljubljana",
-    address: "Slomškova ulica 1",
-    city: "1000 Ljubljana, Slovenija",
-    phone: "+386 1 234 5678",
-    email: "info@goodwill.si",
-    hours: hours,
-    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&auto=format&fit=crop",
-    mapImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&auto=format&fit=crop",
-    mapLabel: "Slomškova ulica 1, Ljubljana",
-  },
   {
     id: "office",
     name: "GOODWILL Pisarna",
@@ -63,19 +45,17 @@ export default function KjeSmoPage() {
             Lokacija
           </p>
           <h1 className="font-serif text-5xl text-white sm:text-6xl">
-            Kje smo
+            Obišči nas
           </h1>
         </div>
       </section>
 
       <section className="section-padding">
         <div className="container-luxury">
-          <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
+          <div className="max-w-md">
             {locations.map((location, idx) => (
               <Reveal key={location.id} delay={idx * 0.1}>
-                <p className="eyebrow mb-6">
-                  {location.id === "showroom" ? "Studio & Showroom" : "Pisarna"}
-                </p>
+                <p className="eyebrow mb-6">Pisarna</p>
                 <address className="not-italic">
                   <div className="flex items-start gap-3 text-muted-foreground">
                     <MapPin className="mt-0.5 size-4 shrink-0" strokeWidth={1.5} />
@@ -138,7 +118,7 @@ export default function KjeSmoPage() {
       <section className="section-padding">
         <div className="container-luxury">
           <p className="eyebrow mb-8">Našo lokacijo najdete na</p>
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div className="max-w-2xl">
             {locations.map((location) => (
               <Reveal key={`map-${location.id}`}>
                 <div className="overflow-hidden rounded-2xl bg-beige aspect-video relative">
