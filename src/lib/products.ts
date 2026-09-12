@@ -1,4 +1,4 @@
-import type { Category, Product } from "./types";
+import type { Category, Gender, Product } from "./types";
 
 /** Base Unsplash CDN url (no size params — Next/Image handles responsive sizing). */
 function img(id: string) {
@@ -232,7 +232,23 @@ export function getProductBySlug(slug: string) {
 }
 
 export function getRelatedProducts(product: Product, count = 4) {
-  return products
-    .filter((p) => p.category === product.category && p.id !== product.id)
-    .slice(0, count);
+  // Determine the gender basis for filtering
+  const filterGender = product.gender || (product.category === "zenske" || product.category === "moski" ? product.category : undefined) as Gender | undefined;
+
+  // First, try to find products with the same gender/category
+  let related = products.filter(
+    (p) => {
+      const pGender = p.gender || (p.category === "zenske" || p.category === "moski" ? p.category : undefined);
+      return pGender === filterGender && p.id !== product.id;
+    }
+  );
+
+  // If not enough, expand to same category
+  if (related.length < count) {
+    related = products.filter(
+      (p) => p.category === product.category && p.id !== product.id
+    );
+  }
+
+  return related.slice(0, count);
 }
