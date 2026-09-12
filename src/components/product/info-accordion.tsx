@@ -10,8 +10,6 @@ export function InfoAccordion({ product }: { product: Product }) {
   const sections = [
     { title: "Opis", content: product.description },
     { title: "Materiali", content: product.materials },
-    { title: "Nega", content: product.care },
-    { title: "Dostava in vra\u010dila", content: product.shipping },
   ];
 
   return (
