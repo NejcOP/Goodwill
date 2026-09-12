@@ -24,6 +24,13 @@ const SUBCATEGORIES: { label: string; value: Subcategory }[] = [
   { label: "Dodatki", value: "dodatki" },
 ];
 
+const getMocSubcategories = (gender?: Gender) => {
+  if (gender === "moski") {
+    return SUBCATEGORIES.filter((s) => s.value !== "krilo");
+  }
+  return SUBCATEGORIES;
+};
+
 export function FilterBarPro({ activeGender, activeSubcategory }: FilterBarProProps) {
   const [mobileGenderOpen, setMobileGenderOpen] = useState(false);
   const [mobileSubOpen, setMobileSubOpen] = useState(false);
@@ -92,7 +99,7 @@ export function FilterBarPro({ activeGender, activeSubcategory }: FilterBarProPr
               >
                 Vse
               </Link>
-              {SUBCATEGORIES.map((sub) => (
+              {getMocSubcategories(activeGender).map((sub) => (
                 <Link
                   key={sub.value}
                   href={getHref(activeGender, sub.value)}
@@ -177,7 +184,7 @@ export function FilterBarPro({ activeGender, activeSubcategory }: FilterBarProPr
                 >
                   Vse
                 </Link>
-                {SUBCATEGORIES.map((sub) => (
+                {getMocSubcategories(activeGender).map((sub) => (
                   <Link
                     key={sub.value}
                     href={getHref(activeGender, sub.value)}
