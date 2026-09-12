@@ -21,11 +21,11 @@ export default function KontaktPage() {
         <div>
           <p className="eyebrow mb-4">Kontakt</p>
           <h1 className="font-serif text-4xl leading-tight sm:text-5xl">
-            Z veseljem vas sli\u0161imo.
+            Z veseljem vas slišimo.
           </h1>
           <p className="mt-6 max-w-md text-muted-foreground">
-            Za povpra\u0161anja o naro\u010dilih, nasvete glede velikosti ali tiskovna
-            povpra\u0161anja stopite v stik z nami — na\u0161a ekipa odgovori v enem
+            Za vprašanja o naročilih, nasvete glede velikosti ali tiskovna
+            vprašanja stopite v stik z nami — naša ekipa odgovori v enem
             delovnem dnevu.
           </p>
 
@@ -52,7 +52,7 @@ export default function KontaktPage() {
             </div>
             <div>
               <label className="mb-2 block text-xs tracking-[0.1em] uppercase text-muted-foreground">
-                E-po\u0161ta
+                E-pošta
               </label>
               <Input type="email" required className="h-12 rounded-lg" />
             </div>
@@ -65,7 +65,7 @@ export default function KontaktPage() {
           </div>
           <div>
             <label className="mb-2 block text-xs tracking-[0.1em] uppercase text-muted-foreground">
-              Sporo\u010dilo
+              Sporočilo
             </label>
             <textarea
               required
@@ -77,7 +77,7 @@ export default function KontaktPage() {
             type="submit"
             className="h-12 w-fit rounded-full px-8 text-xs tracking-[0.15em] uppercase"
           >
-            Po\u0161lji sporo\u010dilo
+            Pošlji sporočilo
           </Button>
         </form>
       </div>
