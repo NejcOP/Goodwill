@@ -50,85 +50,121 @@ export default function KjeSmoPage() {
 
       <section className="section-padding">
         <div className="container-luxury">
-          <div className="max-w-md">
-            {locations.map((location, idx) => (
-              <Reveal key={location.id} delay={idx * 0.1}>
-                <p className="eyebrow mb-6">Pisarna</p>
-                <address className="not-italic">
-                  <div className="flex items-start gap-3 text-muted-foreground">
-                    <MapPin className="mt-0.5 size-4 shrink-0" strokeWidth={1.5} />
-                    <div>
-                      <p className="font-serif text-xl text-foreground">
-                        {location.name}
-                      </p>
-                      <p className="mt-1 text-sm">{location.address}</p>
-                      <p className="text-sm">{location.city}</p>
+          <div className="grid gap-12 lg:grid-cols-2">
+            {/* Info Section */}
+            <div>
+              {locations.map((location, idx) => (
+                <Reveal key={location.id} delay={idx * 0.1}>
+                  <p className="eyebrow mb-8">Pisarna</p>
+
+                  {/* Location Card */}
+                  <div className="mb-12 rounded-2xl border border-beige bg-warm-white p-8">
+                    <address className="not-italic">
+                      <div className="flex gap-4">
+                        <div className="shrink-0 pt-1">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-charcoal/10">
+                            <MapPin className="size-5 text-charcoal" strokeWidth={1.5} />
+                          </div>
+                        </div>
+                        <div>
+                          <p className="font-serif text-lg font-semibold text-charcoal">
+                            {location.name}
+                          </p>
+                          <p className="mt-3 text-sm text-muted-foreground">
+                            {location.address}
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            {location.city}
+                          </p>
+                        </div>
+                      </div>
+                    </address>
+                  </div>
+
+                  {/* Contact Card */}
+                  <div className="mb-8 space-y-4 rounded-2xl border border-beige bg-warm-white p-8">
+                    <a
+                      href={`tel:${location.phone.replace(/\s+/g, "")}`}
+                      className="flex items-center gap-4 group"
+                    >
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-charcoal/10 group-hover:bg-charcoal/20 transition-colors">
+                        <Phone className="size-5 text-charcoal" strokeWidth={1.5} />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs text-muted-foreground mb-1">Telefon</p>
+                        <p className="text-sm font-medium text-charcoal group-hover:underline">
+                          {location.phone}
+                        </p>
+                      </div>
+                    </a>
+                    <a
+                      href={`mailto:${location.email}`}
+                      className="flex items-center gap-4 group"
+                    >
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-charcoal/10 group-hover:bg-charcoal/20 transition-colors">
+                        <Mail className="size-5 text-charcoal" strokeWidth={1.5} />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs text-muted-foreground mb-1">Email</p>
+                        <p className="text-sm font-medium text-charcoal group-hover:underline">
+                          {location.email}
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+
+                  {/* Hours Card */}
+                  <div className="rounded-2xl border border-beige bg-warm-white p-8">
+                    <div className="flex gap-4">
+                      <div className="shrink-0 pt-1">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-charcoal/10">
+                          <Clock className="size-5 text-charcoal" strokeWidth={1.5} />
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <p className="font-serif text-lg font-semibold text-charcoal mb-4">
+                          Urnik
+                        </p>
+                        <ul className="space-y-3">
+                          {location.hours.map((h) => (
+                            <li
+                              key={h.day}
+                              className="flex items-center justify-between text-sm"
+                            >
+                              <span className="text-muted-foreground font-medium">
+                                {h.day}
+                              </span>
+                              <span className="text-charcoal font-semibold">
+                                {h.time}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                </address>
+                </Reveal>
+              ))}
+            </div>
 
-                <div className="mt-8 flex flex-col gap-3">
-                  <a
-                    href={`tel:${location.phone.replace(/\s+/g, "")}`}
-                    className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <Phone className="size-4 shrink-0" strokeWidth={1.5} />
-                    {location.phone}
-                  </a>
-                  <a
-                    href={`mailto:${location.email}`}
-                    className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <Mail className="size-4 shrink-0" strokeWidth={1.5} />
-                    {location.email}
-                  </a>
-                </div>
-
-                <div className="mt-10 flex items-start gap-3">
-                  <Clock className="mt-0.5 size-4 shrink-0 text-muted-foreground" strokeWidth={1.5} />
-                  <div className="flex-1">
-                    <p className="font-medium text-foreground mb-3">Urnik</p>
-                    <ul className="flex flex-col divide-y divide-beige">
-                      {location.hours.map((h) => (
-                        <li
-                          key={h.day}
-                          className="flex items-center justify-between py-2 text-sm"
-                        >
-                          <span className="text-muted-foreground">{h.day}</span>
-                          <span
-                            className={
-                              h.time === "Zaprto" ? "text-muted-foreground" : ""
-                            }
-                          >
-                            {h.time}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+            {/* Map Section */}
+            <div>
+              <Reveal delay={0.2}>
+                <p className="eyebrow mb-8">Lokacija na zemljevidu</p>
+                <div className="overflow-hidden rounded-2xl h-[500px] sticky top-8">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.7551686876656!2d14.498629999999998!3d46.0505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d546c5d5d5d5d%3A0xf8c8c8c8c8c8c8c8!2sPra%C5%BEakova%208%2C%201000%20Ljubljana!5e0!3m2!1ssl!2ssi!4v1234567890123"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
                 </div>
               </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding">
-        <div className="container-luxury">
-          <p className="eyebrow mb-12">Našo lokacijo najdete na</p>
-          <Reveal>
-            <div className="overflow-hidden rounded-2xl bg-beige h-96">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.7551686876656!2d14.498629999999998!3d46.0505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476d546c5d5d5d5d%3A0xf8c8c8c8c8c8c8c8!2sPra%C5%BEakova%208%2C%201000%20Ljubljana!5e0!3m2!1ssl!2ssi!4v1234567890123"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
     </div>
