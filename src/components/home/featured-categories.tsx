@@ -5,11 +5,11 @@ import { Reveal } from "@/components/ui/reveal";
 import { categoryImages } from "@/lib/products";
 
 const categories = [
-  { name: "Moški", href: "/izdelki?kategorija=moski", image: categoryImages.moski },
-  { name: "Ženske", href: "/izdelki?kategorija=zenske", image: categoryImages.zenske },
+  { name: "Moški", href: "/izdelki?spol=moski", image: categoryImages.moski },
+  { name: "Ženske", href: "/izdelki?spol=zenske", image: categoryImages.zenske },
   {
     name: "Novi prihodi",
-    href: "/izdelki?sort=najnovejsi",
+    href: "/izdelki",
     image: categoryImages.dodatki,
   },
 ];
