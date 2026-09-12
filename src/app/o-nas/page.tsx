@@ -63,6 +63,15 @@ export default function AboutPage() {
               sezone. Vsaka kolekcija je majhna, premišljena in sprosta
               počasi.
             </p>
+            <p className="mt-6 text-muted-foreground">
+              V vsakem komadu vidite našo dedikacijo detaljom — od izbire
+              naravnih materialov, ki jih sčasoma postanejo le lepši, do
+              izgleda krojenja, ki je podržan skozi leta nošenja. Naš pristop
+              ni industrija, je obrt. Dela z majhnimi rokami tvorcev, ki
+              razumejo vrednost kakovosti in sonaravnosti v vsakem šivu.
+              GOODWILL je obljuba — da bodo oblačila, ki si jih izberiš, še
+              vredno nositi v deset letih.
+            </p>
           </Reveal>
         </div>
       </section>
